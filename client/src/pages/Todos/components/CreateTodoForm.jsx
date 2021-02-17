@@ -2,12 +2,8 @@ import { Flex, Button } from '@chakra-ui/react';
 import { Formik, Form } from 'formik';
 import FormikInput from 'components/FormikInput';
 import * as yup from 'yup';
-import { useHistory } from 'react-router-dom';
 
-const EditTodoForm = ({ todo }) => {
-  const history = useHistory();
-  const toHome = () => history.push('/');
-
+const CreateTodoForm = ({ onClose }) => {
   const validationSchema = yup.object({
     name: yup.string().required('Required'),
     description: yup.string(),
@@ -15,18 +11,10 @@ const EditTodoForm = ({ todo }) => {
 
   return (
     <Formik
-      initialValues={{ name: todo.name, description: todo.description }}
+      initialValues={{ name: '', description: '' }}
       validationSchema={validationSchema}
     >
-      <Flex
-        as={Form}
-        boxShadow='lg'
-        borderRadius='7px'
-        w={['100%', '70%']}
-        direction='column'
-        p='5'
-        bgColor='white'
-      >
+      <Form>
         <FormikInput name='name' label='Name' placeholder='Todo name' />
 
         <FormikInput
@@ -37,17 +25,17 @@ const EditTodoForm = ({ todo }) => {
           h='md'
         />
 
-        <Flex pt='5' justify='center'>
-          <Button type='submit' colorScheme='telegram' mr={3}>
+        <Flex justify='center' p='2'>
+          <Button colorScheme='telegram' mr={3} onClick={onClose}>
             Save
           </Button>
-          <Button colorScheme='red' onClick={toHome}>
+          <Button colorScheme='red' onClick={onClose}>
             Cancel
           </Button>
         </Flex>
-      </Flex>
+      </Form>
     </Formik>
   );
 };
 
-export default EditTodoForm;
+export default CreateTodoForm;

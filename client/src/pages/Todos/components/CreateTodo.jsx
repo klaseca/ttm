@@ -4,11 +4,9 @@ import {
   ModalContent,
   ModalHeader,
   ModalBody,
-  ModalFooter,
-  Button,
 } from '@chakra-ui/react';
 
-import CreateTodoForm from './CreateTaskForm';
+import CreateTodoForm from './CreateTodoForm';
 
 const CreateTodo = ({ isOpen, onClose }) => {
   return (
@@ -23,17 +21,8 @@ const CreateTodo = ({ isOpen, onClose }) => {
       <ModalContent>
         <ModalHeader>Create todo</ModalHeader>
         <ModalBody>
-          <CreateTodoForm />
+          <CreateTodoForm onClose={onClose} />
         </ModalBody>
-
-        <ModalFooter justifyContent='center'>
-          <Button colorScheme='telegram' mr={3} onClick={onClose}>
-            Save
-          </Button>
-          <Button colorScheme='red' onClick={onClose}>
-            Cancel
-          </Button>
-        </ModalFooter>
       </ModalContent>
     </Modal>
   );
