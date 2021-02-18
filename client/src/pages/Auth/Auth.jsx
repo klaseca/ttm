@@ -3,7 +3,7 @@ import AuthForm from './components/AuthForm';
 
 const Auth = () => {
   return (
-    <Flex h='100%' justify='center' align='center'>
+    <Flex h='100%' justify='center' direction='column' align='center'>
       <AuthForm />
     </Flex>
   );
