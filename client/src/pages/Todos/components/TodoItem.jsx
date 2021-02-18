@@ -1,7 +1,15 @@
 import { Flex, Button, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
-const TodoItem = ({ id, name, description, dateCreated }) => {
+const TodoItem = ({ ws, email, id, name, description, dateCreated }) => {
+  const removeTodoHandler = () => {
+    const request = {
+      event: 'removeTodo',
+      payload: { email, id },
+    };
+    ws.send(request);
+  };
+
   return (
     <Flex
       direction='column'
@@ -16,7 +24,9 @@ const TodoItem = ({ id, name, description, dateCreated }) => {
       <Text>{description}</Text>
       <Flex align='center' justify='space-around' pt='3'>
         <Text color='blue.400'>{dateCreated}</Text>
-        <Button colorScheme='telegram'>Delete</Button>
+        <Button onClick={removeTodoHandler} colorScheme='telegram'>
+          Delete
+        </Button>
       </Flex>
     </Flex>
   );
