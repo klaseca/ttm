@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import PrivateRoute from 'components/PrivateRoute';
 import Header from 'components/Header';
 import Main from 'components/Main';
 import Todos from 'pages/Todos/Todos';
@@ -12,12 +12,12 @@ const App = () => {
       <Header />
       <Main>
         <Switch>
-          <Route path='/' exact>
+          <PrivateRoute path='/' exact>
             <Todos />
-          </Route>
-          <Route path='/todo/:id'>
+          </PrivateRoute>
+          <PrivateRoute path='/todo/:id'>
             <Todo />
-          </Route>
+          </PrivateRoute>
           <Route path='/auth'>
             <Auth />
           </Route>
